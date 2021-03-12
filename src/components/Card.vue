@@ -9,13 +9,6 @@
         :name="form.name + form.index"
         type="text"
     >
-    <button
-        v-if="changed"
-        class="btn-add"
-        @click="save()"
-    >
-      Zapisz
-    </button>
     <div class="card-checkbox">
       <input
           :id="'blocked' + form.index"
@@ -26,6 +19,21 @@
       <label :for="'blocked' + form.index">
         {{ form.blocked ? 'Zablokowano' : 'Odblokowano' }}
       </label>
+    </div>
+    <div
+        v-if="changed"
+        class="card-buttons"
+    >
+      <button
+          class="btn-add"
+          @click="save()"
+      >
+        Zapisz
+      </button>
+      <button
+          class="btn-cancel"
+          @click="cancel()"
+      />
     </div>
   </div>
 </template>
@@ -45,12 +53,15 @@ export default {
   },
   computed: {
     changed () {
-      return this.form.name !== this.card.name;
+      return this.form.name !== this.card.name || this.form.blocked !== this.card.blocked;
     }
   },
   methods: {
     save () {
       this.$emit('updateCard', this.form);
+    },
+    cancel () {
+      this.form = { ...this.card };
     }
   }
 };

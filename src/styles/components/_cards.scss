@@ -6,4 +6,34 @@
 .card {
   margin: 10px;
   padding: 10px;
+  min-height: 107px;
+
+  button {
+    display: block;
+    font-size: 15px;
+    padding: 3px 9px;
+  }
+
+  input {
+    margin-bottom: 5px;
+  }
+
+  .card-checkbox {
+    background-color: white;
+    margin-bottom: 5px;
+  }
+}
+
+.card-form {
+  display: flex;
+  padding: 20px 0;
+
+  .input-container {
+    margin-right: 20px;
+  }
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
 }

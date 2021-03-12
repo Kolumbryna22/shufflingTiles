@@ -17,7 +17,7 @@
           type="checkbox"
       >
       <label :for="'blocked' + form.index">
-        {{ form.blocked ? 'Zablokowano' : 'Odblokowano' }}
+        {{ form.blocked ? 'Zablokowano' : 'Odblokowano' }} {{ card.index }}
       </label>
     </div>
     <div
@@ -54,6 +54,11 @@ export default {
   computed: {
     changed () {
       return this.form.name !== this.card.name || this.form.blocked !== this.card.blocked;
+    }
+  },
+  watch: {
+    card () {
+      this.form = { ...this.card };
     }
   },
   methods: {

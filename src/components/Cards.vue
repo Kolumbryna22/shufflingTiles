@@ -72,7 +72,15 @@ export default {
       this.$set(this.cards, index, new CardConstructor(e));
     },
     shuffleCards () {
+      for (let i = this.cards.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * this.cards.length);
+        const temp = { ...this.cards[i] };
 
+        if (!this.cards[i].blocked && !this.cards[j].blocked) {
+          this.$set(this.cards, i, this.cards[j]);
+          this.$set(this.cards, j, temp);
+        }
+      }
     },
     addCard (e) {
       this.cards.push(new CardConstructor(e));

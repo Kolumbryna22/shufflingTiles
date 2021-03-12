@@ -11,11 +11,6 @@ export default {
   name: 'App',
   components: {
     Cards
-  },
-  methods: {
-    currentTableUsers (e) {
-      console.log(e);
-    }
   }
 };
 </script>

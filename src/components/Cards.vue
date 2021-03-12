@@ -4,7 +4,7 @@
       <Card
           v-for="(card, index) in cards"
           :key="index"
-          :card="card"
+          :card="{...card, index}"
           @updateCard="updateCard($event, index)"
       />
     </div>
@@ -68,8 +68,8 @@ export default {
     };
   },
   methods: {
-    updateCard (e) {
-
+    updateCard (e, index) {
+      this.$set(this.cards, index, new CardConstructor(e));
     },
     shuffleCards () {
 
